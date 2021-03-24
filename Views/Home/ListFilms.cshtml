@@ -12,6 +12,7 @@
     <br />
     <br /><br />
 
+    <!--Table showing film objects-->
     <table class="table table-striped shadow">
         <thead>
             <tr>
@@ -38,6 +39,7 @@
                 {
                     <tr>
                         <td scope="row">
+                            <!--button to edit film-->
                             <form asp-action="EditFilm" method="post">
                                 <input hidden name="filmId" value="@x.FilmId" />
                                 <button type="submit" class="btn btn-outline-info shadow">Edit</button>
@@ -52,6 +54,7 @@
                         <td scope="row">@x.LentTo</td>
                         <td scope="row">@x.Notes</td>
                         <td scope="row">
+                            <!--button to delete film-->
                             <form asp-action="RatifyDeletion" method="post">
                                 <input hidden name="filmId" value="@x.FilmId" />
                                 <button type="submit" class="btn btn-outline-danger shadow">Delete</button>

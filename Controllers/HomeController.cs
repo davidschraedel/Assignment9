@@ -62,12 +62,14 @@ namespace Assignment9.Controllers
             }
         }
 
+        //List films
         [HttpGet]
         public IActionResult ListFilms()
         {
             return View(_context.Films);
         }
         
+        //return user to view for editing a film's information
         [HttpPost]
         public IActionResult EditFilm(int filmId)
         {
@@ -76,6 +78,7 @@ namespace Assignment9.Controllers
             return View("EditFilm", film);
         }
 
+        //save changes user made in EditFilm view
         [HttpPost]
         public IActionResult SaveEdits(FilmModel film, int filmId)
         {
@@ -92,14 +95,16 @@ namespace Assignment9.Controllers
             _context.SaveChanges();
             return View("ListFilms", _context.Films);
         }
-
+        
+        //Ask user to confirm they would like to delete a specified film
         [HttpPost]
         public IActionResult RatifyDeletion(int filmId)
         {
             FilmModel film = _context.Films.Single(x => x.FilmId == filmId);
             return View(film);
         }
-
+        
+        //delete film after user has ratified the decision
         [HttpPost]
         public IActionResult DeleteFilm(int filmId)
         {
