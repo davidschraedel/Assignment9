@@ -12,7 +12,7 @@
     <br /><br />
 
     <!--Table for viewing film to be deleted-->
-    <table class="table table-striped">
+    <table class="table table-striped shadow">
         <thead>
             <tr>
                 <th scope="col">Category</th>
@@ -44,11 +44,11 @@
     <!--Delete form, pass model id-->
     <form asp-action="DeleteFilm" method="post">
         <input hidden name="filmId" value="@Model.FilmId" />
-        <button type="submit" class="btn btn-lg btn-danger">Remove this Film</button>
+        <button type="submit" class="btn btn-lg btn-danger shadow">Remove this Film</button>
     </form>
 
     <br />
     <!--Cancel Deletion button-->
-    <a asp-action="ListFilms" class="btn btn-outline-info">Cancel</a>
+    <a asp-action="ListFilms" class="btn btn-outline-info shadow">Cancel</a>
 
 </div>
