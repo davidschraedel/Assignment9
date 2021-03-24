@@ -1,0 +1,53 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Delete a Film";
+}
+
+@model FilmModel
+
+<div class="text-center">
+    <h1 class="display-3">Are you sure you want to remove the film, @Model.Title?</h1>
+    <br /><br />
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Category</th>
+                <th scope="col">Title</th>
+                <th scope="col">Year</th>
+                <th scope="col">Director</th>
+                <th scope="col">Rating</th>
+                <th scope="col">Edited</th>
+                <th scope="col">Lent To</th>
+                <th scope="col">Notes</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td scope="row">@Model.Category</td>
+                <td scope="row">@Model.Title</td>
+                <td scope="row">@Model.Year</td>
+                <td scope="row">@Model.Director</td>
+                <td scope="row">@Model.Rating</td>
+                <td scope="row">@Model.Edited</td>
+                <td scope="row">@Model.LentTo</td>
+                <td scope="row">@Model.Notes</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <br /><br />
+
+    <!--Delete form, pass model id-->
+    <form asp-action="DeleteFilm" method="post">
+        <input hidden name="filmId" value="@Model.FilmId" />
+        <button type="submit" class="btn btn-lg btn-danger">Remove this Film</button>
+    </form>
+
+    <br />
+    <!--Cancel Deletion button-->
+    <a asp-action="ListFilms" class="btn btn-outline-info">Cancel</a>
+
+</div>

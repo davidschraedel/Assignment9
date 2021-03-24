@@ -1,0 +1,97 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Add a Film";
+}
+
+@model Assignment9.Models.FilmModel
+
+
+<div class="container text-center">
+    <div class="text-center">
+        <h1 class="display-3">@ViewData["Title"]</h1>
+    </div>
+    <br />
+    <br />
+    <form asp-action="AddFilm" method="post">
+        <table class="table table-striped shadow">
+            <thead>
+                <tr>
+                    <th scope="col"><label asp-for="Category"></label></th>
+                    <th scope="col"><label asp-for="Title"></label></th>
+                    <th scope="col"><label asp-for="Year"></label></th>
+                    <th scope="col"><label asp-for="Director"></label></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td scope="row">
+                        <select asp-for="Category">
+                            <option value="Action/Adventure">Action/Adventure</option>
+                            <option value="Comedy">Comedy</option>
+                            <option value="Drama">Drama</option>
+                            <option value="Family">Family</option>
+                            <option value="Horror/Suspense">Horror/Suspense</option>
+                            <option value="Miscellaneous">Miscellaneous</option>
+                            <option value="Television">Television</option>
+                            <option value="VHS">VHS</option>
+                        </select>
+
+                    </td>
+                    <td scope="row">
+                        <input asp-for="Title" />
+                    </td>
+                    <td scope="row">
+                        <input type="number" maxlength="4" asp-for="Year" />
+                    </td>
+                    <td scope="row">
+                        <input asp-for="Director" />
+                    </td>
+                </tr>
+            </tbody>
+            <!--second row in table of inputs-->
+            <thead>
+                <tr>
+                    <th scope="col"><label asp-for="Rating"></label></th>
+                    <th scope="col"><label asp-for="Edited"></label></th>
+                    <th scope="col"><label asp-for="LentTo"></label></th>
+                    <th scope="col"><label asp-for="Notes"></label></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td scope="row">
+                        <select asp-for="Rating">
+                            <option value="G">G Rating</option>
+                            <option value="PG">PG Rating</option>
+                            <option value="PG-13">PG-13 Rating</option>
+                            <option value="R">R Rating</option>
+                        </select>
+                    </td>
+                    <td scope="row">
+                        <input asp-for="Edited" />
+                    </td>
+                    <td scope="row">
+                        <input asp-for="LentTo" />
+                    </td>
+                    <td scope="row">
+                        <input asp-for="Notes" />
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <br />
+        <br />
+        <div>
+            <input class="btn btn-outline-info shadow" type="submit" value="Submit Film to Collection" />
+        </div>
+        <br />
+        <!--validation output-->
+        <div>
+            <div class="custListItem" asp-validation-summary="All"></div>
+        </div>
+    </form>
+</div>

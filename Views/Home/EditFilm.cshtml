@@ -1,0 +1,115 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Edit a Film";
+}
+
+@model FilmModel
+
+<div class="container text-center">
+    <div class="text-center">
+        <h1 class="display-3">@ViewData["Title"]</h1>
+    </div>
+    <br />
+    <br />
+    <form asp-action="SaveEdits" method="post">
+        <table class="table table-striped shadow">
+            <thead>
+                <tr>
+                    <th scope="col"><label asp-for="Category"></label></th>
+                    <th scope="col"><label asp-for="Title"></label></th>
+                    <th scope="col"><label asp-for="Year"></label></th>
+                    <th scope="col"><label asp-for="Director"></label></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td scope="row">
+                        Action/Adventure
+                        @Html.RadioButtonFor(model => model.Category, "Action/Adventure")
+                        <br />
+                        Comedy
+                        @Html.RadioButtonFor(model => model.Category, "Comedy")
+                        <br />
+                        Drama
+                        @Html.RadioButtonFor(model => model.Category, "Drama")
+                        <br />
+                        Family
+                        @Html.RadioButtonFor(model => model.Category, "Family")
+                        <br />
+                        Horror/Suspense
+                        @Html.RadioButtonFor(model => model.Category, "Horror/Suspense")
+                        <br />
+                        Miscellaneous
+                        @Html.RadioButtonFor(model => model.Category, "Miscellaneous")
+                        <br />
+                        Television
+                        @Html.RadioButtonFor(model => model.Category, "Television")
+                        <br />
+                        VHS
+                        @Html.RadioButtonFor(model => model.Category, "VHS")
+                        <br />
+
+                    </td>
+                    <td scope="row">
+                        <input asp-for="Title" value="@Model.Title" />
+                    </td>
+                    <td scope="row">
+                        <input type="number" maxlength="4" asp-for="Year" value="@Model.Year" />
+                    </td>
+                    <td scope="row">
+                        <input asp-for="Director" value="@Model.Director" />
+                    </td>
+                </tr>
+            </tbody>
+            <!--second row in table of inputs-->
+            <thead>
+                <tr>
+                    <th scope="col"><label asp-for="Rating"></label></th>
+                    <th scope="col"><label asp-for="Edited"></label></th>
+                    <th scope="col"><label asp-for="LentTo"></label></th>
+                    <th scope="col"><label asp-for="Notes"></label></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td scope="row">
+                        G Rating
+                        @Html.RadioButtonFor(model => model.Rating, "G")
+                        <br />
+                        PG Rating
+                        @Html.RadioButtonFor(model => model.Rating, "PG")
+                        <br />
+                        PG-13 Rating
+                        @Html.RadioButtonFor(model => model.Rating, "PG-13")
+                        <br />
+                        R Rating
+                        @Html.RadioButtonFor(model => model.Rating, "R")
+                    </td>
+                    <td scope="row">
+                        <input asp-for="Edited" value="@Model.Edited" />
+                    </td>
+                    <td scope="row">
+                        <input asp-for="LentTo" value="@Model.LentTo" />
+                    </td>
+                    <td scope="row">
+                        <input asp-for="Notes" value="@Model.Notes" />
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <br /><br />
+
+        <!--submit changes, pass id-->
+        <input hidden name="filmId" value="@Model.FilmId" />
+        <button type="submit" class="btn btn-lg btn-info shadow">Save Changes</button>
+
+        <br /><br />
+
+        <!--button to cancel changes-->
+        <a asp-action="ListFilms" class="btn btn-outline-danger shadow">Cancel</a>
+    </form>
+</div>
+

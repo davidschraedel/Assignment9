@@ -1,0 +1,65 @@
+﻿@{
+    ViewBag.Title = "Entire Film Collection";
+}
+
+@model IEnumerable<FilmModel>
+
+<div class="container text-center">
+    <div class="text-center">
+        <h1 class="display-3">Joel Hilton's Current Film Collection</h1>
+    </div>
+    <br />
+    <br />
+    <br /><br />
+
+    <table class="table table-striped shadow">
+        <thead>
+            <tr>
+                <th></th>
+                <th scope="col">Category</th>
+                <th scope="col">Title</th>
+                <th scope="col">Year</th>
+                <th scope="col">Director</th>
+                <th scope="col">Rating</th>
+                <th scope="col">Edited</th>
+                <th scope="col">Lent To</th>
+                <th scope="col">Notes</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (FilmModel x in Model)
+            {
+                @if (x.Title.ToUpper().Trim().Replace(" ", "") == "INDEPENDENCEDAY")
+                {
+                    continue;
+                }
+                else
+                {
+                    <tr>
+                        <td scope="row">
+                            <form asp-action="EditFilm" method="post">
+                                <input hidden name="filmId" value="@x.FilmId" />
+                                <button type="submit" class="btn btn-outline-info shadow">Edit</button>
+                            </form>
+                        </td>
+                        <td scope="row">@x.Category</td>
+                        <td scope="row">@x.Title</td>
+                        <td scope="row">@x.Year</td>
+                        <td scope="row">@x.Director</td>
+                        <td scope="row">@x.Rating</td>
+                        <td scope="row">@x.Edited</td>
+                        <td scope="row">@x.LentTo</td>
+                        <td scope="row">@x.Notes</td>
+                        <td scope="row">
+                            <form asp-action="RatifyDeletion" method="post">
+                                <input hidden name="filmId" value="@x.FilmId" />
+                                <button type="submit" class="btn btn-outline-danger shadow">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
